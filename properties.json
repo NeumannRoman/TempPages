@@ -1,0 +1,38 @@
+{
+  "plotly" : {
+    "font-family" : "Segoe UI",
+    "label-font-size" : 12,
+    "tick-font-size" : 12,
+    "hover-font-size" : 12,
+    "timestrip-height" : 1,
+    "timestrip-opacity" : 1.0,
+    "static-tick-angle" : false,
+    "min-date" : "",
+    "max-date" : "",
+    "background-color" : "#2F3437",
+    "default-timestrip-color" : "#53575a",
+    "light-font-color" : "#ffffff",
+    "dark-font-color" : "#53575a"
+  },
+  
+  "notion" : {
+    "api-key" : "secret_lcm5qhJmusdZsfU2T1Gee8CCNlFZonQFzA88aE5zdUO",
+    "table-id" : "6eed881ba6bc406ab9de1677e6817bd5",
+    "notion-version" : "2021-08-16",
+    "data" : {
+      "filter" : {
+        "property" : "Show",
+        "formula" : {
+          "text" : {
+            "is_not_empty" : true
+          }
+        }
+      }
+    }
+  },
+  
+  "server" : {
+    "address" : "localhost",
+    "port" : "8000"
+  }
+}

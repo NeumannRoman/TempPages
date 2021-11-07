@@ -1,0 +1,44 @@
+body { 
+  overflow: hidden; /*removes scrollbars*/
+  background: #2F3437;
+  /*removes white default margins*/
+  margin-top: 0px; 
+  margin-right: 0px; 
+  margin-bottom: 0px; 
+  margin-left: 0px;
+}
+form {
+  margin-bottom: 0px;
+}
+#plot_div {
+  position: absolute;
+  top: 7px; 
+  left: 10%; 
+  z-index: 10;
+}
+#init_div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+#cp_input {
+  vertical-align: middle; 
+  background-color: #2F3437;
+  border: 0px;
+}
+.plot_button {
+  vertical-align: middle; 
+  padding-top: 0px;  
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  font-family : Segoe UI; 
+  background-color: #53575a;
+  color: #ffffff;
+  font-size: 9px;
+}
+#init_button {
+  font-family : Segoe UI; 
+  font-size: 20px;
+  transform: translate(-50%, -50%);
+}

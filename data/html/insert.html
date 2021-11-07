@@ -1,0 +1,22 @@
+<div id="plot_div">
+  <input type="color" value="#53575A" id="cp_input">
+  <button class="btn plot_button" onclick="copyColorToClipboard()" >copy</button>
+  <button class="btn plot_button" form="update_form">update</button>
+  <form action="http://%1:%2" method="POST" id="update_form">
+    <input type="hidden" name="update" value="1">
+  </form>
+
+  <script>
+    function copyColorToClipboard() {
+      var textArea = document.createElement("textarea");
+      textArea.value = document.getElementById("cp_input").value;
+      document.body.appendChild(textArea);
+
+      textArea.focus();
+      textArea.select();
+      document.execCommand('copy');
+      
+      document.body.removeChild(textArea);
+    }
+  </script>
+</div>
