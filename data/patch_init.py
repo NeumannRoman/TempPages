@@ -3,10 +3,10 @@ from subprocess import run
 from util import replace, readConstants
 
 
-def gitPush(target):
-  run(["git", "add", target])
+def gitPush():
+  run(["git", "add", "."])
   run(["git", "commit", "-m", "Patched init."])
-  run(["git", "push", "https://github.com/NeumannRoman/TimelinePages.git", "master:main", "-f"])
+  run(["git", "push", "origin", "main"])
 
 def patchInitIndex():
   base = "data/html/init_base.html"
@@ -21,8 +21,7 @@ def patchInitIndex():
       if "%3" in data[i]: replace(data, i, "%3", cons["plotly"]["font-family"])
   with open(target, "w") as file:
     file.writelines(data)
-
-  gitPush(target)
+  gitPush()
 
 
 if __name__ == "__main__":
