@@ -161,7 +161,7 @@ class Timeline:
 
     pio.write_html(
       self.figure, 
-      file = "index.html", 
+      file = "data/html/local/index.html", 
       validate = False, 
       auto_open = False,
       config = dict(

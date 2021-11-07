@@ -39,13 +39,13 @@ class TL_Handler(BaseHTTPRequestHandler):
 
 
   def getCSS(self):
-    self.writeGET("text/css", "html/style.css")
+    self.writeGET("text/css", "html/local/style.css")
 
   def getICON(self):
-    self.writeGET("image/x-icon", "html/favicon.ico")
+    self.writeGET("image/x-icon", "html/local/icon.ico")
 
   def getHTML(self):
-    self.writeGET("text/html", "html/index.html")
+    self.writeGET("text/html", "html/local/timeline.html")
 
   def do_GET(self):
     self.send_response(200) # 'HTTP:200 OK'

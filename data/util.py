@@ -50,14 +50,14 @@ def htmlFormatStylesheet(cons):
     elif "%2" in data[i]: replace(data, i, "%2", cons["default-timestrip-color"])
     elif "%3" in data[i]: replace(data, i, "%3", fontColor)
     elif "%4" in data[i]: replace(data, i, "%4", cons["font-family"])
-  with write("../style.css") as file:
+  with write("html/local/style.css") as file:
     file.writelines(data)
 
 def htmlInsertHead(data, i):
   temp = '<link rel="stylesheet" href="%1">'
-  replaceHead(data, i, temp.replace("%1", "style.css"))
+  replaceHead(data, i, temp.replace("%1", "data/html/local/style.css"))
   replaceHead(data, i, temp.replace("%1", "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"))
-  replaceHead(data, i, '<link rel="icon" href="data/html/favicon.ico">')
+  replaceHead(data, i, '<link rel="icon" href="data/html/local/icon.ico">')
   replaceHead(data, i, "<title>Notion Timeline</title>")
 
 def htmlInsertButtons(data, i, cons):
@@ -82,7 +82,7 @@ def adjustHTML():
   cons.update(readPlotly())
   data = None
 
-  with read("../index.html") as file:
+  with read("html/local/timeline.html") as file:
     data = file.readlines()
 
   for i in range(len(data)):
@@ -90,6 +90,6 @@ def adjustHTML():
     if "<div>" in data[i]: htmlInsertButtons(data, i, cons)
     if oldPos in data[i]: htmlMovePlotlyModebar(data, oldPos, i)
 
-  with write("../index.html") as file:
+  with write("html/local/timeline.html") as file:
     file.writelines(data)
   htmlFormatStylesheet(cons)

@@ -4,7 +4,8 @@
 </head>
 <body style="background-color: #2F3437;">
   <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-    <form action="http://localhost:8000" method="POST"> <!-- adress and port must be manually updated on change -->
+    <form action="http://localhost:8000" method="POST">
+      <input type="hidden" name="init" value="1">
       <input type="submit" class="btn btn-success" style="font-family : 'Segoe UI'; font-size: 20px;" name="init" value="Start Timeline">
     </form>
   </div>
