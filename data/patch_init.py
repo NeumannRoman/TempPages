@@ -1,24 +1,24 @@
 from subprocess import run
 
-from util import replace, readServer
+from util import replace, readConstants
 
 
-def gitPush(targets):
-  run(["git", "add", *targets])
+def gitPush(target):
+  run(["git", "add", target])
   run(["git", "commit", "-m", "Patched init."])
-  run(["git", "push", "origin", "main"])
+  run(["git", "push", "https://github.com/NeumannRoman/TimelinePages.git", "master:main", "-f"])
 
 def patchInitIndex():
-  base = "html/init_base.html"
+  base = "data/html/init_base.html"
   target = "index.html"
-  cons = readServer()
+  cons = readConstants()
   data = None
   with open(base, "r") as file:
     data = file.readlines()
     for i in range(len(data)):
-      replace(data, i, "%1", cons["address"])
-      replace(data, i, "%2", cons["port"])
-      break
+      if "%1" in data[i]: replace(data, i, "%1", cons["server"]["address"])
+      if "%2" in data[i]: replace(data, i, "%2", cons["server"]["port"])
+      if "%3" in data[i]: replace(data, i, "%3", cons["plotly"]["font-family"])
   with open(target, "w") as file:
     file.writelines(data)
 
