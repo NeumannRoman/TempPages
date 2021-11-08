@@ -10,7 +10,7 @@ from data.timeline import redrawTimeline
 
 CONS = readServer()
 
-def printProcess( message, i = -1, n = -1):
+def printProcess(message, i = -1, n = -1):
   progress = f"[{i}/{n}] " if (i > -1 and n > -1) else ""
   print(f"{progress}{message} . . .")
 
@@ -55,6 +55,7 @@ class TL_Handler(BaseHTTPRequestHandler):
       self.getICON()
     else:
       self.getHTML()
+    print("~" * 50)
 
 
   def getFormValue(self, name):
@@ -82,9 +83,6 @@ class TL_Handler(BaseHTTPRequestHandler):
     self.send_header("Pragma", "no-cache")
     self.send_header("Expires", "0")
     self.end_headers()
-    print("-" * 50)
-    print("Finished !")
-    printServerRunning()
 
   def sendNotImplemented(self):
     self.send_response(501) # 'HTTP:501 Not Implemented'
@@ -96,10 +94,11 @@ class TL_Handler(BaseHTTPRequestHandler):
       self.query()
       self.redraw()
       self.redirect()
-    elif self.getFormValue("init"):
+    elif self.getFormValue("run_local"):
       self.do_GET()
     else:
       self.sendNotImplemented()
+    print("~" * 50)
 
 
 class TL_Server:

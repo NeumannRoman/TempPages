@@ -1,0 +1,12 @@
+.ndrag, .sdrag, .edrag, .wdrag, .nsdrag, .ewdrag {
+  fill: %1;
+  filter: invert(100%);
+  opacity: 0;
+  transition: opacity 0.3s ease 0s;
+}
+.nsewdrag, .nwdrag, .nedrag, .sedrag, .swdrag {
+  opacity : 0;
+}
+.ndrag:hover, .sdrag:hover, .edrag:hover, .wdrag:hover, .nsdrag:hover, .ewdrag:hover {
+  opacity: 0.5;
+}

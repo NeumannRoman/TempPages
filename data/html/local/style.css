@@ -1,7 +1,6 @@
 body { 
   overflow: hidden; /*removes scrollbars*/
   background: #2F3437;
-  /*removes white default margins*/
   margin-top: 0px; 
   margin-right: 0px; 
   margin-bottom: 0px; 
@@ -15,11 +14,6 @@ form {
   top: 7px; 
   left: 10%; 
   z-index: 10;
-}
-#init_div {
-  position: absolute;
-  top: 50%;
-  left: 50%;
 }
 #cp_input {
   vertical-align: middle; 
@@ -37,8 +31,20 @@ form {
   color: #ffffff;
   font-size: 9px;
 }
-#init_button {
-  font-family : Segoe UI; 
-  font-size: 20px;
-  transform: translate(-50%, -50%);
+.btn:hover {
+  background-color: #53575a;
+  filter: invert(100%);
+  color: #ffffff;
+}
+.ndrag, .sdrag, .edrag, .wdrag, .nsdrag, .ewdrag {
+  fill: #2F3437;
+  filter: invert(100%);
+  opacity: 0;
+  transition: opacity 0.3s ease 0s;
+}
+.nsewdrag, .nwdrag, .nedrag, .sedrag, .swdrag {
+  opacity : 0;
+}
+.ndrag:hover, .sdrag:hover, .edrag:hover, .wdrag:hover, .nsdrag:hover, .ewdrag:hover {
+  opacity: 0.5;
 }

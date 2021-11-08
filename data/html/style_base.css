@@ -1,10 +1,10 @@
 body { 
   overflow: hidden; /*removes scrollbars*/
   background: %1;
-  margin-top: 1px; 
-  margin-right: 1px; 
-  margin-bottom: 1px; 
-  margin-left: 1px;
+  margin-top: 0px; 
+  margin-right: 0px; 
+  margin-bottom: 0px; 
+  margin-left: 0px;
 }
 form {
   margin-bottom: 0px;
@@ -30,4 +30,9 @@ form {
   background-color: %2;
   color: %3;
   font-size: 9px;
+}
+.btn:hover {
+  color: %3;
+  background-color: %2;
+  filter: invert(100%);
 }
