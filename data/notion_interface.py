@@ -1,6 +1,8 @@
-import requests
 from requests.structures import CaseInsensitiveDict
 from json import dumps as json_dumps
+from traceback import format_exc
+from math import inf
+import requests
 
 from data.util import readNotion, write
 
@@ -96,6 +98,22 @@ class NotionInterface:
     }
 
   def queryTable(self):
+    success = False
     response = self.doRequest("post", "table")
-    objects = [ self.extractProps(page["properties"]) for page in response["results"] ]
-    self.writeJSON(objects)
+    try:
+      objects = []
+      for i in range(len(response["results"])):
+        props = response["results"][i]["properties"]
+        obj = self.extractProps(props)
+        num = props["Order"]["number"]
+        if num is None: num = -inf
+        objects.append((obj, num))
+      objects.sort(key = lambda x : x[1])
+      objects = [ pair[0] for pair in objects ]
+      objects.reverse() # NOTE : strips are added to the plot from the bottom: reversing orders the final plot from top to bottom
+      self.writeJSON(objects)
+      success = True
+    except:
+      print(format_exc())
+    return success
+

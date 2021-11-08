@@ -7,14 +7,17 @@ class Date:
   @classmethod
   def fromString(cls, string : str):
     if not string: return None
-    values = [ int(v) for v in string.split(".") ]
-    if len(values) == 3:
-      day, month, year = values
+
+    values = None
+    if "." in string:
+      values = [ int(v) for v in string.split(".") ]
+      values.reverse()
+    if not values:
+      return cls(int(string), 1, 1)
     elif len(values) == 2:
-      day, month, year = 1, values
-    else:
-      day, month, year = 1, 1, values[0]
-    return cls(year, month, day)
+      return cls(*values, 1)
+    else: 
+      return cls(*values)
 
   def __str__(self):
     hasMonth = self.month > 0

@@ -70,7 +70,7 @@ class TL_Handler(BaseHTTPRequestHandler):
 
   def query(self):
     printProcess("Collecting Data", 1, 2)
-    self.NOTION.queryTable()
+    return self.NOTION.queryTable()
 
   def redraw(self):
     printProcess("Drawing Timeline", 2, 2)
@@ -86,8 +86,7 @@ class TL_Handler(BaseHTTPRequestHandler):
 
   def do_POST(self):
     if self.getFormValue("update"):
-      self.query()
-      self.redraw()
+      if self.query(): self.redraw()
       self.redirect()
     else:
       self.do_GET()

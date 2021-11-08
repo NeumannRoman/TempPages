@@ -84,15 +84,21 @@ class Timeline:
     self.strips : list[Timestrip] = []
     self.minValue = inf if not CONS["min-date"] else float(Date.fromString(CONS["min-date"]))
     self.maxValue = -inf if not CONS["max-date"] else float(Date.fromString(CONS["max-date"]))
+    self.numOfFillers = 0
+
+  def getStripIndex(self):
+    return len(self.strips) - self.numOfFillers
 
   def addStrip(self, obj):
-    strip = Timestrip(index = len(self.strips), **obj)
+    strip = Timestrip(index = self.getStripIndex(), **obj)
     self.strips.append(strip)
 
     if strip.start is not None and not CONS["min-date"]:
       self.minValue = float(strip.start) if float(strip.start) < self.minValue else self.minValue
     if strip.end is not None and not CONS["max-date"]:
       self.maxValue = float(strip.end) if float(strip.end) > self.maxValue else self.maxValue
+    if strip.isFiller: 
+      self.numOfFillers += 1
 
   def initFromJSON(self, content):
     for obj in content:
@@ -102,7 +108,7 @@ class Timeline:
 
   def updateLayout(self):
     x_width = self.maxValue - self.minValue
-    y_width = len(self.strips) * CONS["margin"] + CONS["offset"]
+    y_width = (len(self.strips) - self.numOfFillers) * CONS["margin"] + CONS["offset"]
     y_frac = CONS["offset"] / float(y_width)
     x_offset = x_width * (y_frac / 4.0)
 
