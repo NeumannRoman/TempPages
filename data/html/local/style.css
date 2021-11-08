@@ -32,9 +32,9 @@ form {
   font-size: 9px;
 }
 .btn:hover {
+  color: #ffffff;
   background-color: #53575a;
   filter: invert(100%);
-  color: #ffffff;
 }
 .ndrag, .sdrag, .edrag, .wdrag, .nsdrag, .ewdrag {
   fill: #2F3437;

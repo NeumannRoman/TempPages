@@ -55,7 +55,7 @@ class TL_Handler(BaseHTTPRequestHandler):
       self.getICON()
     else:
       self.getHTML()
-    print("~" * 50)
+    print("-" * 75)
 
 
   def getFormValue(self, name):
@@ -84,21 +84,14 @@ class TL_Handler(BaseHTTPRequestHandler):
     self.send_header("Expires", "0")
     self.end_headers()
 
-  def sendNotImplemented(self):
-    self.send_response(501) # 'HTTP:501 Not Implemented'
-    self.send_header("Content-type", "text/plain")
-    self.end_headers()
-
   def do_POST(self):
     if self.getFormValue("update"):
       self.query()
       self.redraw()
       self.redirect()
-    elif self.getFormValue("run_local"):
-      self.do_GET()
     else:
-      self.sendNotImplemented()
-    print("~" * 50)
+      self.do_GET()
+    print("-" * 75)
 
 
 class TL_Server:
